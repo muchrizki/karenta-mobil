@@ -54,13 +54,13 @@ export default function SectionTiga () {
     ]
 
     return (
-        <div className="section-tiga bg-[#FAFAFA] px-8 py-12">
+        <div id="mobil kami" className="section section-tiga bg-[#FAFAFA] px-8 py-12">
             <h3 className="text-[#07090D] font-bold text-2xl tracking-wider xl:translate-x-14 2xl:translate-x-10 2xl:text-4xl">Pilihan Mobil Kami</h3>
             
             <div className="card-container mt-10 md:mt-12 bg-blue-0 p-0 xl:px-14 2xl:px-10 flex flex-col gap-8 md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
 
                 {products.map(product => (
-                    <div key={product.title} className="card bg-white shadow-lg rounded-2xl overflow-hidden relative w-fit">
+                    <div key={product.title} className="card bg-white shadow-lg rounded-2xl overflow-hidden relative w-fit" data-aos="fade-up" data-aos-duration="3000">
                         <img src={product.img} alt="" />
 
                         <div className={`save-or-great-price-label flex ${product.greatPrice ? 'justify-between' : 'justify-end' }  items-center bg-cyan-0 absolute top-0 w-full px-4 py-4`}>

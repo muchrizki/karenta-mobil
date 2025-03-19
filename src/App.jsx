@@ -47,7 +47,11 @@ import SectionSatu from './components/SectionSatu'
 import hero from "./assets/images/hero.png"
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
-import { useState } from 'react'
+
+import { useState, useEffect } from 'react'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 
 function App() {
@@ -61,10 +65,58 @@ function App() {
   const avatars = {anna, budi, laura}
   const logos = {audi, daihatsu, toyota, volkswagen, honda, nissan, byd, bmw}
 
+  
+
+
+  const [currentSection, setCurrentSection] = useState('home')
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    setCurrentSection(sectionId)
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleScroll = () => {
+    const sections = document.querySelectorAll('.section');
+    let current = '';
+
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+        current = section.id;
+      }
+    });
+
+    if (current !== currentSection) {
+      setCurrentSection(current);
+    }
+  };
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1200, // Duration of animation
+      easing: 'ease-in-out', // Easing function
+      once: true, // Whether the animation should happen only once
+    });
+  }, [])
+
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll); // Menambahkan event listener scroll
+
+    // Membersihkan event listener saat komponen unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [currentSection]);
+
   return (
     <>
-      <Navbar logoKarenta={logoKarenta} handleSidebar={handleSidebar}/>
-      {sidebar && <Sidebar handleSidebar={handleSidebar} />}
+      <Navbar logoKarenta={logoKarenta} handleSidebar={handleSidebar} scrollToSection={scrollToSection} currentSection={currentSection}/>
+      {sidebar && <Sidebar handleSidebar={handleSidebar} scrollToSection={scrollToSection} currentSection={currentSection}/>}
+
       <SectionSatu hero={hero} />
       <SectionDua logos={logos} />
       <SectionTiga />
@@ -72,7 +124,8 @@ function App() {
       <SectionLima avatars={avatars} />
       <SectionEnam iconsEnam={iconsEnam} batamMap={batamMap} iconsOrange={iconsOrange} />
       <SectionTujuh banner={banner} />
-      <Footer logoKarenta={logoKarenta} iconFooter={iconFooter}/>
+
+      <Footer logoKarenta={logoKarenta} iconFooter={iconFooter} scrollToSection={scrollToSection} currentSection={currentSection}/>
     </>
   )
 }

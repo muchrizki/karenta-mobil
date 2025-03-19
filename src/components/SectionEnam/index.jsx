@@ -22,7 +22,7 @@ export default function SectionEnam ({iconsEnam, batamMap, iconsOrange}) {
     const {orangeFacebook, orangeInstagram, orangeTwitter} = iconsOrange
 
     return (
-        <div className="section-enam mb-6 px-8 py-8 bg-cyan-0 flex flex-col md:flex-row md:items-end md:gap-10 gap-8 xl:pl-19 min-[1920px]:ml-9">
+        <div id="kontak" className="section section-enam mb-6 px-8 py-8 bg-cyan-0 flex flex-col md:flex-row md:items-end md:gap-10 gap-8 xl:pl-19 min-[1920px]:ml-9">
 
             <div className="first ml-1 flex flex-col gap-4 bg-purple-0 max-w-[330px] lg:max-w-[500px] 2xl:max-w-[700px]">
                 <h3 className="text-2xl font-bold tracking-wide 2xl:text-4xl">Hubungi Kami</h3>

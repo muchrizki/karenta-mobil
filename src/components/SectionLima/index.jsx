@@ -68,7 +68,7 @@ export default function SectionLima ({avatars}) {
       };
 
     return (
-        <div className="section-lima bg-[#F1F1F1] px-9 py-20 relative xl:px-10 2xl:px-18">
+        <div id="testimoni" className="section section-lima bg-[#F1F1F1] px-9 py-20 relative xl:px-10 2xl:px-18">
 
             <div className="header flex justify-between">
                 <h3 className="text-2xl font-bold tracking-wider 2xl:text-4xl xl:translate-x-10">Testimoni</h3>
@@ -77,7 +77,7 @@ export default function SectionLima ({avatars}) {
 
             <Carousel arrows={false} responsive={responsive} renderButtonGroupOutside={true} infinite={true} autoPlay={true} itemClass="carousel-item-padding-0-px" autoPlaySpeed={4000} customButtonGroup={<CustomButton />} className="mt-9 rounded-xl bg-transparent md:pl-0 lg:pl-0 xl:translate-x-8">
                 {testimonial.map(item => (
-                    <div key={item.name} className="card ml-0 md:mr-1 max-w-[500px] min-[912px]:max-w-[400px] lg:max-w-[500px] 2xl:max-w-[550px] bg-white p-4 rounded-xl shadow-lg border-[0.7px] border-[#E9E9E9]">
+                    <div key={item.name} className="card ml-0 md:mr-1 max-w-[500px] min-[912px]:max-w-[400px] lg:max-w-[500px] 2xl:max-w-[550px] bg-white p-4 rounded-xl shadow-lg border-[0.7px] border-[#E9E9E9]" data-aos="fade-down" data-aos-duration="3000">
 
                         <Ratings ratings={item.rate} totalStars={5} />
                         <p className="mt-4 tracking-widest md:tracking-wide 2xl:max-w-[400px]">{item.desc}</p>

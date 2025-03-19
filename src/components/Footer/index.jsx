@@ -1,7 +1,7 @@
 
 
 import "./Footer.css"
-export default function Footer ({logoKarenta, iconFooter}) {
+export default function Footer ({logoKarenta, iconFooter, scrollToSection, currentSection}) {
 
     const menuCompany = ["Home", "Mobil Kami", "Layanan", "Testimoni", "Kontak"]
     const armadaKami = ["Toyota", "Honda", "Daihatsu", "Wuling", "Nissan"]
@@ -19,7 +19,7 @@ export default function Footer ({logoKarenta, iconFooter}) {
                 <ul className="mt-3 grid grid-cols-2 gap-2 lg:gap-3 md:flex md:flex-col">
                     {
                         menuCompany.map(menu => (
-                            <li key={menu} className="tracking-widest cursor-pointer 2xl:text-xl">{menu}</li>
+                            <li key={menu} className={`tracking-widest ${currentSection == menu.toLowerCase() ? 'text-[#FDC400]' : 'text-black'} cursor-pointer 2xl:text-xl`} onClick={() => scrollToSection(menu.toLowerCase())}>{menu}</li>
                         ))
                     }
                     
